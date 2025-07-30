@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 import { SigninPage } from '../../pages/signin.page';
 
-test('@positive login with POM', async ({ page }) => {
+test('@positive signin', async ({ page }) => {
   const signinPage = new SigninPage(page);
   await signinPage.goto();
-  await signinPage.login();
+  await signinPage.signin();
   await expect(page).toHaveURL(/register/);
 });

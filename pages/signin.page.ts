@@ -8,7 +8,7 @@ export class SigninPage {
         await this.page.goto('https://practicesoftwaretesting.com/');
     }
 
-    async login() {
+    async signin() {
         const user = generateRandomUser();
 
         await this.page.click('[data-test="nav-sign-in"]');
@@ -20,7 +20,7 @@ export class SigninPage {
         await this.page.fill('#street', user.address.street);
         await this.page.fill('#city', user.address.city);
         await this.page.fill('#postal_code', user.address.zipCode);
-        await this.page.selectOption('#country', user.address.country);
+        await this.page.selectOption('[data-test="country"]', user.address.country);
         await this.page.fill('#phone', user.phone);
 
         await this.page.click('button[type="submit"]');
