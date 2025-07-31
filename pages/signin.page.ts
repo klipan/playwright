@@ -1,6 +1,4 @@
 import { Page } from '@playwright/test';
-import { generateRandomUser } from '../randomthings/dataGenerator';
-import { saveUserToFile } from '../randomthings/userStorage';
 
 export class SigninPage {
     constructor(private page: Page) {}
