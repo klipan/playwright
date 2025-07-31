@@ -27,7 +27,7 @@ export class SigninPage {
         this.city = page.locator('[data-test="city"]');
         this.zipCode = page.locator('[data-test="postal_code"]');
         this.state = page.locator('[data-test="state"]');
-        this.country = page.locator('[data-test="country"]'); //[data-test="country"] // #country
+        this.country = page.locator('#country'); //[data-test="country"] // #country
         this.phone = page.locator('[data-test="phone"]');
         this.email = page.locator('[data-test="email"]');
         this.password = page.locator('[data-test="password"]');
@@ -50,7 +50,7 @@ export class SigninPage {
         await this.city.fill(user.address.city);
         await this.zipCode.fill(user.address.zipCode);
         await this.state.fill(user.state);
-        await this.country.selectOption(user.address.country); //[data-test="country"] // #country
+        await this.country.selectOption(user.address.country);
         await this.phone.fill(user.phone);
         await this.email.fill(user.email);
         await this.password.fill('Mih@jlo1');

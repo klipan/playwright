@@ -9,5 +9,6 @@ export class LoginPage {
         await this.page.fill('#password', 'Mih@jlo1');
 
         await this.page.click('[data-test="login-submit"]');
+        await expect(this.page).toHaveURL('https://practicesoftwaretesting.com/account');
     }
 }

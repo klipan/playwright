@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test} from '@playwright/test';
 import { SigninPage } from '../../pages/signin.page';
 import { LoginPage } from '../../pages/login.page';
 import { generateRandomUser } from '../../randomthings/dataGenerator';
