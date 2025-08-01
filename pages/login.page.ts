@@ -1,14 +1,23 @@
-import {expect, Page} from '@playwright/test';
+import {expect, Locator, Page} from '@playwright/test';
 
 export class LoginPage {
-    constructor(private page: Page) {}
+    private loginSubmit: Locator;
+    private loginEmailField: Locator;
+    private loginPasswordField: Locator;
+
+    constructor(private page: Page) {
+    this.loginSubmit = page.locator('[data-test="login-submit"]');
+    this.loginEmailField = page.locator('#email');
+    this.loginPasswordField = page.locator('#password');
+
+    }
 
     async login(user:any) {
 
-        await this.page.fill('#email', user.email);
-        await this.page.fill('#password', 'Mih@jlo1');
+        await this.loginEmailField.fill(user.email);
+        await this.loginPasswordField.fill('Mih@jlo1');
 
-        await this.page.click('[data-test="login-submit"]');
+        await this.loginSubmit.click();
         await expect(this.page).toHaveURL('https://practicesoftwaretesting.com/account');
     }
 }

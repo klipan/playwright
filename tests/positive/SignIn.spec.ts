@@ -12,6 +12,4 @@ test('@positive signin', async ({ page }) => {
   await signinPage.goto();
   await signinPage.signin(user);
 
-  await loginPage.login(user);
-
 });
