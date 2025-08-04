@@ -5,7 +5,7 @@ import {generateRandomUser} from "../../randomthings/dataGenerator";
 import {saveUserToFile} from "../../randomthings/userStorage";
 import {OrderFlow} from "../../pages/order.page";
 
-test('@positive order', async ({ page }) => {
+test('@e2e order', async ({ page }) => {
 
     const signinPage = new SigninPage(page);
     const loginPage = new LoginPage(page);

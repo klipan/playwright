@@ -9,7 +9,6 @@ export class BasePage {
     get searchField(): Locator {
         return this.page.locator('#search-query');
     }
-
     async clickByText(text: string) {
         await this.page.getByText(text).click();
     }
@@ -21,5 +20,14 @@ export class BasePage {
     }
     get search(): Locator {
         return this.page.locator('[data-test="search-submit"]');
+    }
+    get loginEmailField() : Locator{
+        return this.page.locator('#email');
+    }
+    get loginPasswordField(): Locator{
+        return this.page.locator('#password');
+    }
+    get loginSubmit(): Locator {
+        return this.page.locator('[data-test="login-submit"]');
     }
 }

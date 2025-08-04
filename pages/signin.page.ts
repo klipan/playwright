@@ -1,6 +1,7 @@
 import {expect, Page, Locator} from '@playwright/test';
+import {BasePage} from "./base.page";
 
-export class SigninPage {
+export class SigninPage extends BasePage {
     private signIn: Locator;
     private registerYourAccount: Locator;
     private firstName: Locator;
@@ -18,7 +19,8 @@ export class SigninPage {
     private submit: Locator;
 
 
-    constructor(private page: Page) {
+    constructor(page: Page) {
+        super(page)
         this.signIn = page.locator('[data-test="nav-sign-in"]');
         this.registerYourAccount = page.locator('[data-test="register-link"]')
         this.firstName = page.locator('[data-test="first-name"]');
@@ -52,15 +54,15 @@ export class SigninPage {
         await this.city.fill(user.address.city);
         await this.zipCode.fill(user.address.zipCode);
         await this.state.fill(user.state);
-        if (await this.country2.isVisible()) {
-            await this.country2.selectOption(user.address.country);
-        } else if (await this.country1.isVisible()) {
-            await this.country1.selectOption(user.address.country);
-        }
+        //if (await this.country2.isVisible()) {
+            //await this.country2.selectOption(user.address.country);
+        //} else if (await this.country1.isVisible()) {
+        //    await this.country1.selectOption(user.address.country);
+        //}
         //await this.country.selectOption(user.address.country);
 
-        //const btn = page.locator('[data-test="nav-sign-in"], #signInButton').first();
-        // await btn.click();
+        const btn = (this.country1, this.country2).first();
+         await btn.click();
 
         await this.phone.fill(user.phone);
         await this.email.fill(user.email);
@@ -69,5 +71,6 @@ export class SigninPage {
         await this.submit.click();
 
         await expect(this.page).toHaveURL('https://practicesoftwaretesting.com/auth/login');
+        await expect(this.loginEmailField).toBeVisible();
     }
 }
