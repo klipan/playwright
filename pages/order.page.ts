@@ -1,5 +1,6 @@
 import {expect, Page} from '@playwright/test';
 import { BasePage } from './base.page';
+import {testData} from "../data.file";
 
 export class OrderFlow extends BasePage {
 
@@ -15,7 +16,7 @@ export class OrderFlow extends BasePage {
         await this.clickByText('Court Hammer');
         await this.quantity.fill('5');
         await this.addToCart.click();
-        await expect(this.page.getByText(' Product added to shopping cart. ')).toBeVisible();
+        await expect(this.page.getByText(testData.messages.addedToCart)).toBeVisible();
 
     }
 }

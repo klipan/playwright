@@ -1,5 +1,6 @@
 import {expect, Page, Locator} from '@playwright/test';
 import {BasePage} from "./base.page";
+import {testData} from "../data.file";
 
 export class SigninPage extends BasePage {
     private signIn: Locator;
@@ -54,23 +55,18 @@ export class SigninPage extends BasePage {
         await this.city.fill(user.address.city);
         await this.zipCode.fill(user.address.zipCode);
         await this.state.fill(user.state);
-        if (await this.country2.isVisible()) {
-            await this.country2.selectOption(user.address.country);
-        } else if (await this.country1.isVisible()) {
-            await this.country1.selectOption(user.address.country);
-        }
-        //await this.country.selectOption(user.address.country);
+        await this.country2.selectOption(user.address.country);
 
         //const btn = (this.country1, this.country2).first();
         // await btn.click();
 
         await this.phone.fill(user.phone);
         await this.email.fill(user.email);
-        await this.password.fill('Mih@jlo1');
+        await this.password.fill(testData.user.password);
 
         await this.submit.click();
 
-        await expect(this.page).toHaveURL('https://practicesoftwaretesting.com/auth/login');
+        await expect(this.page).toHaveURL(testData.urls.login);
         await expect(this.loginEmailField).toBeVisible();
     }
 }
